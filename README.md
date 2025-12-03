@@ -1,3 +1,19 @@
+#Nacho's retrospective
+Hey, guys! Thank you for the pleasant interview! I found what the error was - in the create_review.rb file, I had this:
+```
+attr_reader :user, :restaurant, :comment, :review
+```
+
+instead of this:
+
+```
+attr_reader :user, :rating, :restaurant, :comment, :review
+```
+
+Naturally, without the rating, nothing was going to work. After that, it all looked good. 
+
+Hope you have a great day!
+
 # Foody - Interview Starting Point
 
 This is a simple development environment for building a restaurant review application. It includes a Rails API backend, React frontend, and PostgreSQL database, all running in Docker containers.
