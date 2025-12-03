@@ -27,7 +27,8 @@ class RestaurantsController < ApplicationController
     create_review_params = {
       user: Current.user,
       restaurant: restaurant,
-      comment: params[:comment]
+      comment: params[:comment],
+      rating: params[:rating]  # New rating parameter
     }
 
     review = CreateReview.call(create_review_params)

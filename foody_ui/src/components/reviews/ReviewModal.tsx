@@ -16,6 +16,7 @@ import {
 
 interface ReviewFormData {
 	comment: string;
+	rating: number;
 }
 
 interface ReviewModalProps {
@@ -42,6 +43,7 @@ export function ReviewModal({
 	} = useForm<ReviewFormData>({
 		defaultValues: {
 			comment: "",
+			rating: 5, // Default rating value
 		},
 	});
 
@@ -59,6 +61,7 @@ export function ReviewModal({
 					restaurantId,
 					reviewData: {
 						comment: data.comment,
+						rating: data.rating, // Include rating in the review data
 					},
 				});
 				onClose();
@@ -119,6 +122,30 @@ export function ReviewModal({
 								<label className="block text-sm font-medium text-gray-700 mb-2">
 									Comment *
 								</label>
+								<select
+									{...register("rating", {
+										required: "Rating is required",
+										min: {
+											value: 1,
+										},
+										max: {
+											value: 5,
+										},
+									})}
+									className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+								
+								>
+									<option value={5}>5 - Excellent</option>
+									<option value={4}>4 - Very Good</option>
+									<option value={3}>3 - Good</option>
+									<option value={2}>2 - Fair</option>
+									<option value={1}>1 - Poor</option>
+									</select>
+								{errors.comment && (
+									<p className="text-sm text-red-600 mt-1">
+										{errors.comment.message}
+									</p>
+								)}
 								<textarea
 									{...register("comment", {
 										required: "Comment is required",

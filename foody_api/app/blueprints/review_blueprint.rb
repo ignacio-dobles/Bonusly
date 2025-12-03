@@ -1,7 +1,7 @@
 class ReviewBlueprint < Blueprinter::Base
   identifier :id
 
-  fields :comment, :created_at, :updated_at
+  fields :comment, :rating, :created_at, :updated_at
 
   view :detail do
     association :user, blueprint: UserBlueprint

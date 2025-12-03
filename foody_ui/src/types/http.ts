@@ -149,6 +149,8 @@ export interface Restaurant {
 	description?: string;
 	phone?: string;
 	imageUrl?: string;
+	averageRating: number;
+	ratingsCount: number;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -158,6 +160,7 @@ export interface Review {
 	comment: string;
 	createdAt: string;
 	updatedAt: string;
+	rating: number;
 	user: User;
 	restaurant?: Restaurant;
 }

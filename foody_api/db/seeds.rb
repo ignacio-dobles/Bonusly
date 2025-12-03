@@ -11,7 +11,7 @@ puts "Default user created: user@example.com / password"
 
 # Create additional users for reviews
 review_users = []
-10.times do |i|
+11.times do |i|
   user = User.find_or_create_by!(email_address: "reviewer#{i + 1}@example.com") do |u|
     u.password = "password123"
   end
@@ -154,6 +154,7 @@ restaurant_data.each_with_index do |data, index|
       user: user,
       restaurant: restaurant,
       comment: comment,
+      rating: rand(1..5), # Random rating between 1 and 5 for testing purposes
       created_at: rand(30.days).seconds.ago # Random dates within last 30 days
     )
   end

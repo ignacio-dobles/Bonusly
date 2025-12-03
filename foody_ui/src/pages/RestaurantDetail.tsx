@@ -55,6 +55,10 @@ function ReviewCard({ review }: { review: Review }) {
 						<span className="text-sm text-gray-600">
 							by {review.user.emailAddress}
 						</span>
+						<span className="text-yellow-500 font-bold">
+							{'★'.repeat(review.rating)}
+							{'☆'.repeat(5 - review.rating)}
+						</span>
 					</div>
 					<p className="text-xs text-gray-500">
 						{formatDate(review.createdAt)}
@@ -156,6 +160,12 @@ export function RestaurantDetail() {
 									</span>
 									<span className="text-xl font-bold text-gray-700">
 										{getPriceDisplay(restaurant.priceRange)}
+									</span>
+									<span className="text-xl font-bold text-gray-700">
+										{Number(restaurant.averageRating).toFixed(1)} / 5
+										<span className="text-gray-700">
+											({restaurant.ratingCounts} reviews)
+										</span>
 									</span>
 								</div>
 							</div>

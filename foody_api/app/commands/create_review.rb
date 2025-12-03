@@ -7,6 +7,7 @@ class CreateReview
     @user = params[:user]
     @restaurant = params[:restaurant]
     @comment = params[:comment]
+    @rating = params[:rating] # New rating parameter
   end
 
   def call
@@ -18,13 +19,14 @@ class CreateReview
 
   private
 
-  attr_reader :user, :restaurant, :comment, :review
+  attr_reader :user, :rating, :restaurant, :comment, :review
 
   def create_review
     @review = Review.create!(
       user: user,
       restaurant: restaurant,
-      comment: comment
+      comment: comment,
+      rating: rating  # Assign the rating value
     )
   end
 end
